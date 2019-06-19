@@ -1,0 +1,45 @@
+<div class="books">
+    <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author Name</th>
+            <th scope="col">ISBN Code</th>
+            <th scope="col"># of Available Books</th>
+            <th scope="col">Publishing Date</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <!-- we loop through the bookList (indicated in ts file), by the clicked row with click method we indicated id of each selected book,
+          when the class id is active upon selection which is type of number (refer to ts file) we pass data to string interpolated (one way binding)
+        shown below " selected Row", and get the id of selection element from the array and pass/interpolate it from the active class to assigned place.
+        -->    
+        <tr *ngFor="let book of bookList, let i = index" (click)="setClickedRow(book.id)" [class.active]="book.id == selectedRow">
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.bookName}}</td>
+            <td>{{book.authorName}}</td>
+            <td>{{book.isbnCode}}</td>
+            <td>{{book.availableBooks}}</td>
+            <td>{{book.publishingDate}}</td>
+            <td>{{book.category}}</td>    
+        </tr>
+      
+          <div class="well well-lg">
+            Selected Row : <strong>{{selectedRow}}</strong>
+        </div>
+      
+        </tbody>
+      </table>
+
+    <ul>
+        <li>
+            <a routerLink="page2" [class.activated]="currentUrl == 'page2'" >
+            Posts
+            </a>
+          </li>
+    </ul>
+
+</div>
